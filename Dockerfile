@@ -80,6 +80,9 @@ RUN echo "#!/bin/bash" >> ${SONATYPE_DIR}/start-nexus-repository-manager.sh \
 
 RUN microdnf remove -y gzip shadow-utils
 
+# Make admin password predictable (hardcode to admin)
+RUN echo "admin" > ${NEXUS_DATA}/admin.password
+
 VOLUME ${NEXUS_DATA}
 
 EXPOSE 8081
